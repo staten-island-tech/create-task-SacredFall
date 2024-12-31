@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.emerson {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emerson > h1 {
+    font-size: 120px;
+    text-transform: uppercase;
+    font-family: "Gambetta", serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    color: PaleGoldenRod;
+    outline: none;
+    text-align: center;
+}
+
+.emerson > h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: "Gambetta", serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 2rem;
+    color: PaleGoldenRod;
+    outline: none;
+    text-align: center;
+}
+
+.emerson > h1:hover,
+.emerson > h2:hover {
+    font-variation-settings: "wght" 582;
+    letter-spacing: 1px;
+}
+.emerson > a:hover {
+    transform: scale(1.1);
+    transition: transform 1s ease-in-out;
+}
+
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+        filter: brightness(1.2) contrast(1.5);
+        background-color: #ffff61; /* Light yellow */
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: brightness(1.2) contrast(1.5);
+        background-color: yellow; /* Lighter yellow */
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: brightness(1.2) contrast(1.5);
+        background-color: #ffff61; /* Light yellow again */
+    }
+}
+
+.emerson > a {
+    animation: aurora 5s infinite;
+    background-color: #ffff61;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: "Gambetta", serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    color: PaleGoldenRod;
+    outline: none;
+    text-align: center;
+}
+#title:hover {
+    font-variation-settings: "wght" 582;
+    letter-spacing: 1px;
+}
+/*
+.game-container {
+    animation: slide-in 1s ease-out forwards;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#mines-board > * {
+    animation: bounce-in 1.5s ease forwards;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(0.75);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}*/
+
+.mine {
+    transition: transform 0.5s ease;
+}
+
+.mine:hover {
+    transform: translateY(-10px);
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    z-index: 1000;
+}
+
+.popup.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}

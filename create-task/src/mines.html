@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Emerson: The Mines Game</title>
+    </head>
+    <body class="bg-gray-900 flex flex-col items-center min-h-screen">
+        <h1 id="title" class="cheat py-10">Emerson</h1>
+        <!-- Balance Panel -->
+        <div class="balance-panel bg-gray-800 text-white p-4 rounded-lg mb-6">
+            <p>Balance: $100.00</p>
+        </div>
+        <!-- Game-Container -->
+        <div
+            class="game-container bg-gray-900 rounded-lg p-6 shadow-lg flex space-x-6"
+        >
+            <!-- Panel-Container -->
+            <div class="manualpanel flex flex-col space-y-4 pt-6">
+                <!-- Amount -->
+                <div class="flex flex-col">
+                    <label class="text-sm mb-1 text-white"> Amount </label>
+                    <div class="amountInput flex items-center space-x-2">
+                        <input
+                            type="text"
+                            placeholder="0.00"
+                            class="bg-gray-700 text-gray-300 px-4 py-2 rounded-lg w-24 focus:outline-none"
+                        />
+                        <button
+                            class="half bg-gray-700 text-gray-300 px-4 py-2 rounded-lg"
+                        >
+                            ½
+                        </button>
+                        <button
+                            class="double bg-gray-700 text-gray-300 px-4 py-2 rounded-lg"
+                        >
+                            2×
+                        </button>
+                    </div>
+                </div>
+                <!-- Mines -->
+                <div class="flex flex-col">
+                    <label class="text-sm mb-1 text-white">Mines</label>
+                    <select
+                        class="minesSelect bg-gray-700 text-gray-300 px-4 py-2 rounded-lg focus:outline-none"
+                    >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                    </select>
+                </div>
+                <!-- Play Button -->
+                <button
+                    class="play bg-yellow-300 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-400 focus:outline-none"
+                >
+                    Play
+                </button>
+                <!--Random Button -->
+                <button
+                    class="clear-random-mine hidden bg-yellow-300 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-400 focus:outline-none"
+                >
+                    Clear Random Mine
+                </button>
+            </div>
+            <!-- Game Board -->
+            <div
+                id="mines-board"
+                class="grid grid-cols-5 gap-5 bg-gray-800 p-4 rounded-lg shadow-inner"
+            >
+                <!-- Game Tiles -->
+                <div id="1" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="2" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="3" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="4" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="5" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="6" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="7" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="8" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div id="9" class="w-24 h-24 bg-gray-700 rounded-lg mine"></div>
+                <div
+                    id="10"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="11"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="12"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="13"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="14"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="15"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="16"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="17"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="18"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="19"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="20"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="21"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="22"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="23"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="24"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+                <div
+                    id="25"
+                    class="w-24 h-24 bg-gray-700 rounded-lg mine"
+                ></div>
+            </div>
+        </div>
+
+        <script type="module" src="mines.js"></script>
+    </body>
+</html>
