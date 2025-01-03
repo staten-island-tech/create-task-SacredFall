@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const imagesToPreload = ["/bomb.svg", "/gem.svg"];
+  imagesToPreload.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
   const DOMselectors = {
     gameContainer: document.querySelector(".game-container"),
     gameBoard: document.querySelector("#mines-board"),
@@ -11,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     doublebutton: document.querySelector(".double"),
     cheatbutton: document.querySelector(".cheat"),
     clearRandomMineButton: document.querySelector(".clear-random-mine"),
+    multi: document.querySelector(".multi"),
   };
 
   let mines = [];
@@ -40,8 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     revealedTiles = 0;
     gameStarted = true;
     DOMselectors.playButton.textContent = "Cash Out";
+    DOMselectors.playButton.disabled = true; // Disable play button initially
     DOMselectors.playButton.removeEventListener("click", startGame);
     DOMselectors.playButton.addEventListener("click", cashOut);
+    DOMselectors.minesSelect.disabled = true;
+    DOMselectors.amountInput.disabled = true;
+    DOMselectors.doublebutton.disabled = true;
+    DOMselectors.halfbutton.disabled = true;
 
     DOMselectors.gameBoard.querySelectorAll(".mine").forEach((tile) => {
       tile.classList.remove("revealed", "mine-tile", "safe-tile");
@@ -49,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tile.addEventListener("click", revealTile);
     });
     DOMselectors.clearRandomMineButton.classList.remove("hidden");
+    DOMselectors.multi.textContent = "Multiplier: 1x";
   }
 
   function generateMines(count) {
@@ -79,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(`Revealed tile ${tileId} as safe.`);
       playSound("/chime.mp3");
       revealedTiles++;
+      updateMultiplier();
       if (revealedTiles === 25 - mines.length) {
         endGame(true);
       }
@@ -86,6 +99,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tile.classList.add("revealed");
     tile.removeEventListener("click", revealTile);
+
+    // Enable play button if at least one tile has been revealed
+    if (revealedTiles > 0) {
+      DOMselectors.playButton.disabled = false;
+    }
+  }
+
+  function updateMultiplier() {
+    const mineCount = parseInt(DOMselectors.minesSelect.value);
+    const profit = calculateProfit(mineCount, revealedTiles);
+    DOMselectors.multi.textContent = `Multiplier: ${profit.toFixed(2)}x`;
   }
 
   function endGame(won) {
@@ -93,6 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
     DOMselectors.playButton.textContent = "Play";
     DOMselectors.playButton.removeEventListener("click", cashOut);
     DOMselectors.playButton.addEventListener("click", startGame);
+    DOMselectors.minesSelect.disabled = false;
+    DOMselectors.amountInput.disabled = false;
+    DOMselectors.doublebutton.disabled = false;
+    DOMselectors.halfbutton.disabled = false;
 
     revealBoard();
 
