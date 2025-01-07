@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealedTiles = 0;
     gameStarted = true;
     DOMselectors.playButton.textContent = "Cash Out";
-    DOMselectors.playButton.disabled = true; // Disable play button initially
     DOMselectors.playButton.removeEventListener("click", startGame);
     DOMselectors.playButton.addEventListener("click", cashOut);
     DOMselectors.minesSelect.disabled = true;
@@ -99,11 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tile.classList.add("revealed");
     tile.removeEventListener("click", revealTile);
-
-    // Enable play button if at least one tile has been revealed
-    if (revealedTiles > 0) {
-      DOMselectors.playButton.disabled = false;
-    }
   }
 
   function updateMultiplier() {
